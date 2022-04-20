@@ -7,8 +7,17 @@
         <header>
             <h1><a href="/">Artemon's blog</a></h1>
         </header>
-
-        <article>
+        
+        {% for post in posts %}
+            <article>
+                <time>published: {{ post.published_date }}</time>
+                <time>created: {{ post.created_date }}</time>
+                <h2><a href="">{{ post.title }}</a></h2>
+                <p>{{ post.text|linebreaksbr }}</p>
+                
+            </article>
+        {% endfor %}
+<!--         <article>
             <time>published: 14.06.2014, 12:14</time>
             <h2><a href="">Chapter 1</a></h2>
             <h3>Where the story begins...</h3>
@@ -25,7 +34,7 @@
                 <li>???????</li>
                 <li>PROFIT</li>
             </ul>
-        </article>
+        </article> -->
     </body>
 
 </html>
