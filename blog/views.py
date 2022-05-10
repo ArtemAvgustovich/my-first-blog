@@ -1,12 +1,11 @@
 from django.http import HttpResponseForbidden
-from django.shortcuts import render, get_object_or_404, redirect
+from django.shortcuts import get_object_or_404
 from django.utils import timezone
 from django.views.generic import ListView, DetailView, CreateView
 from django.views.generic.edit import UpdateView
 from django.contrib.auth.mixins import LoginRequiredMixin
 
 from .models import Post
-from .forms import PostForm
 
 class IndexView(ListView):
     template_name = 'blog/post_list.html'
@@ -54,4 +53,3 @@ class PostEdit(LoginRequiredMixin, UpdateView):
             form.instance.published_date = timezone.now()
             return super().form_valid(form)
         return HttpResponseForbidden("Access denied! You can't edit other user's posts.")
-
